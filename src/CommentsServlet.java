@@ -42,6 +42,9 @@ public class CommentsServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
 
+        /* for multi-routing cluster */
+        System.out.println("CommentsServlet: " + request.getRequestURI());
+
         try (Connection conn = dataSource.getConnection()) {
 
             String query = "SELECT * from comments;";
@@ -83,6 +86,9 @@ public class CommentsServlet extends HttpServlet {
         response.setContentType("application/json"); // Response mime type
 
         PrintWriter out = response.getWriter();
+
+        /* for multi-routing cluster */
+        System.out.println("CommentsServlet: " + request.getRequestURI());
 
         String commentString = request.getParameter("comment_string");
         System.out.println(commentString);
